@@ -1,4 +1,4 @@
-/ --- CONFIGURAÇÃO ---
+    // --- CONFIGURAÇÃO ---
     const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz5ib6FUpSDoxpOiJvuwskFU5vBLyt_UqxQ5CtmizLMLZFEtSRbdIPef9WHYv913NZ7Gg/exec';
     const DEFAULT_TYPING_DELAY = 25; // Atraso em ms entre cada comando de digitação
 
