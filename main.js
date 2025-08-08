@@ -431,14 +431,14 @@ function waitForTerminal() {
     let attempts = 0;
     const maxAttempts = 50; // Tenta por 5 segundos
     const interval = setInterval(() => {
-        // `unsafeWindow` é a forma correta de acessar variáveis da página no Tampermonkey/Greasemonkey
-        if (typeof unsafeWindow.term !== 'undefined' && typeof unsafeWindow.term.paste === 'function') {
+        // O script injetado roda no contexto da página, então usamos 'window' diretamente.
+        if (typeof window.term !== 'undefined' && typeof window.term.paste === 'function') { // <--- CORRIGIDO
             clearInterval(interval);
             console.log("Terminal encontrado. Verificando prompt de login...");
-            waitForLoginPrompt(unsafeWindow.term);
+            waitForLoginPrompt(window.term); // <--- CORRIGIDO
         } else if (++attempts > maxAttempts) {
             clearInterval(interval);
-            console.error("Erro: API do terminal (unsafeWindow.term) não encontrada.");
+            console.error("Erro: API do terminal (window.term) não encontrada.");
         }
     }, 100);
 }
